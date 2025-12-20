@@ -1,4 +1,4 @@
 #ashley-cherry-mars 
 
 
-add info code the dream
+Detailed Project Portfolio info for Intro to Programming Code The Dream.
