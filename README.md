@@ -1,2 +1,2 @@
 # ashley-cherry-mars
-portfolio project for Intro to Programming course with Code the Dream detailed info.
+Detailed Project Portfolio info for Code The Dream Intro to Programming
