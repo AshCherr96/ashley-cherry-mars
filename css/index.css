@@ -2,12 +2,23 @@ body {
     background-color: #f8f9fa; 
     color: #333;
     font-family: "Open Sans", sans-serif; 
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    line-height: 1.8;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px;
+    border: 1px solid #d1d5db; 
+    border-top: 6px solid #4a90e2;
+    border-radius: 8px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
 }
 
+header {
+    position: sticky; 
+    top: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
 h1 {
     color: #2c3e50;
@@ -41,6 +52,24 @@ section {
 }
 
 
+#Experience .job-item {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    margin-bottom: 20px;
+}
+
+
+#Experience .job-description {
+    flex-basis: 100%;
+    margin-top: 10px;
+}
+
+.job-title {
+    font-weight: bold;
+    color: #2c3e50; 
+}
+
 #Experience ul {
     list-style-type: none;
     padding: 0;
@@ -64,4 +93,12 @@ section {
 
 #Connect i:hover {
     color: #2980b9;        
+}
+
+#Connect ul {
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    list-style: none;
+    padding: 0;
 }
