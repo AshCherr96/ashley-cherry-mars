@@ -1,28 +1,30 @@
-// --- Footer Element & Copyright Text ---
-const body = document.querySelector('body');
-const footer = document.createElement('footer');
-body.appendChild(footer);
+// Footer & Copyright
+const footer = document.querySelector('footer');
+
+const today = new Date();
+const thisYear = today.getFullYear();
+
+const copyright = footer.querySelector('p');
+copyright.innerHTML = `&copy; ${thisYear} Ashley Cherry`;
 
 
-const today = new Date(); 
-const thisYear = today.getFullYear(); 
+// List of Skills
+const skills = [
+    "JavaScript", 
+    "HTML & CSS", 
+    "Git & GitHub", 
+    "React", 
+    "Responsive Design", 
+    "UI/UX Principles",
+    "Data Visualization"
+];
 
-const copyright = document.createElement('p'); 
-
-copyright.innerHTML = `Ashley Cherry-Mars &copy; ${thisYear}`; 
-
-// Copyright to the footer
-footer.appendChild(copyright); 
-
-
-// --- List of Skills ---
-const skills = ["JavaScript", "HTML", "CSS", "GitHub", "Responsive Design", "Flexbox/Grid"]; 
-
-const skillsSection = document.getElementById('skills'); 
-const skillsList = skillsSection.querySelector('ul'); 
+const skillsSection = document.getElementById('Skills');
+const skillsList = skillsSection.querySelector('ul');
+skillsList.innerHTML = ''; 
 
 for (let i = 0; i < skills.length; i++) {
-    const skill = document.createElement('li'); 
-    skill.innerText = skills[i]; 
-    skillsList.appendChild(skill); 
+    const skill = document.createElement('li');
+    skill.innerText = skills[i];
+    skillsList.appendChild(skill);
 }
