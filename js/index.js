@@ -22,7 +22,7 @@ const skills = [
     "Problem Solving",
     "Team Collaboration",
     "WordPress",
-    "LLM Prompt Creation & Evaluation"
+    "LLM Prompt Creation & Evaluation",
 ];
 
 const skillsSection = document.getElementById('Skills');
