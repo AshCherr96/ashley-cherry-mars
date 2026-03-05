@@ -18,7 +18,11 @@ const skills = [
     "React", 
     "Responsive Design", 
     "UI/UX Principles",
-    "Data Visualization"
+    "Data Visualization",
+    "Problem Solving",
+    "Team Collaboration",
+    "WordPress",
+    "LLM Prompt Creation & Evaluation"
 ];
 
 const skillsSection = document.getElementById('Skills');
@@ -114,42 +118,3 @@ newMessage.appendChild(removeButton);
     toggleMessageSection(); 
     messageForm.reset();    
 });
-
-// --- Fetch GitHub Repositories ---
-const GITHUB_USERNAME = 'AshCherr96';
-
-fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(repositories => {
-        console.log("Repositories:", repositories);
-
-        // Select Projects Section and List
-        const projectSection = document.getElementById('Projects');
-        const projectList = projectSection.querySelector('ul');
-
-        // Iterate through repositories
-        for (let i = 0; i < repositories.length; i++) {
-            const project = document.createElement('li');
-
-            // Create a link for each repository
-            const projectLink = document.createElement('a');
-            projectLink.href = repositories[i].html_url;
-            projectLink.target = "_blank"; 
-            projectLink.innerText = repositories[i].name;
-            project.appendChild(projectLink);
-            projectList.appendChild(project);
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching repositories:', error);
-        const projectSection = document.getElementById('Projects');
-        const projectList = projectSection.querySelector('ul');
-        const errorMessage = document.createElement('li');
-        errorMessage.innerText = "Check back soon for my latest projects!";
-        projectList.appendChild(errorMessage);
-    });
