@@ -308,7 +308,8 @@ footer {
 }
 
 #projects li {
-    background: #2980b9; 
+    background: #2980b9;
+    color: white;
     padding: 15px;
     border-radius: 8px;
     width: 300px;
