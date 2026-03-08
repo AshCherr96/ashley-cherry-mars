@@ -118,3 +118,19 @@ newMessage.appendChild(removeButton);
     toggleMessageSection(); 
     messageForm.reset();    
 });
+
+// --- Fetch GitHub Repositories ---
+fetch('https://api.github.com/users/AshCherr96/repos')
+  .then(response => response.json())
+  .then(repositories => {
+    const projectSection = document.getElementById('projects');
+    const projectList = projectSection.querySelector('ul');
+
+    for (let i = 0; i < repositories.length; i++) {
+      const project = document.createElement('li');
+      // Optional: Make the name a link to the repo
+      project.innerHTML = `<a href="${repositories[i].html_url}" target="_blank">${repositories[i].name}</a>`;
+      projectList.appendChild(project);
+    }
+  })
+  .catch(error => console.error('Error fetching repositories:', error));
