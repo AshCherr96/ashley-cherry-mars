@@ -42,12 +42,11 @@ const messageSection = document.getElementById("messages");
 // Function to hide/show the "Messages" section 
 function toggleMessageSection() {
     const messageList = messageSection.querySelector("ul");
-    if (!messageList) return; 
-
+    // This hides the entire messages section if the list is empty
     if (messageList.children.length === 0) {
-        messageSection.classList.add("hidden");
+        messageSection.style.display = "none";
     } else {
-        messageSection.classList.remove("hidden");
+        messageSection.style.display = "block";
     }
 }
 
@@ -119,7 +118,7 @@ newMessage.appendChild(removeButton);
     messageForm.reset();    
 });
 
-// --- Fetch GitHub Repositories ---
+// --- Fetch GitHub Repositories (Improved) ---
 fetch('https://api.github.com/users/AshCherr96/repos')
   .then(response => response.json())
   .then(repositories => {
@@ -128,24 +127,16 @@ fetch('https://api.github.com/users/AshCherr96/repos')
 
     for (let i = 0; i < repositories.length; i++) {
       const project = document.createElement('li');
-      // Optional: Make the name a link to the repo
-      project.innerHTML = `<a href="${repositories[i].html_url}" target="_blank">${repositories[i].name}</a>`;
+      
+      // Get decription or use a default message if it's null
+      const desc = repositories[i].description || "Personal project exploring web development.";
+      const date = new Date(repositories[i].created_at).toLocaleDateString();
+
+      project.innerHTML = `
+        <a href="${repositories[i].html_url}" target="_blank"><strong>${repositories[i].name}</strong></a>
+        <p>${desc}</p>
+        <small>Created: ${date}</small>
+      `;
       projectList.appendChild(project);
     }
-  })
-  .catch(error => console.error('Error fetching repositories:', error));
-
-  for (let i = 0; i < repositories.length; i++) {
-    const project = document.createElement('li');
-    
-    // Adding the description and date for more detail
-    const description = repositories[i].description ? repositories[i].description : "No description provided.";
-    const date = new Date(repositories[i].created_at).toLocaleDateString();
-
-    project.innerHTML = `
-        <a href="${repositories[i].html_url}" target="_blank"><strong>${repositories[i].name}</strong></a>
-        <p>${description}</p>
-        <small>Created on: ${date}</small>
-    `;
-    projectList.appendChild(project);
-}
+  });
