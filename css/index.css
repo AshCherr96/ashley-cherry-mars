@@ -1,14 +1,38 @@
+/* Global Variables for Light and Dark Mode */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --header-bg: #ffffff;
+    --section-bg: #f4f4f4;
+    --accent-color: #2980b9;
+    --nav-bg: #f8f9fa;
+    --border-color: #dddddd;
+    --card-shadow: rgba(0,0,0,0.1);
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f4f4f4;
+    --header-bg: #1a1a1a;
+    --section-bg: #2d2d2d;
+    --accent-color: #3498db;
+    --nav-bg: #2d2d2d;
+    --border-color: #444444;
+    --card-shadow: rgba(0,0,0,0.5);
+}
+
 /* 1. MOBILE STYLES (Mobile-First) */
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #ffffff;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: "Open Sans", sans-serif;
     padding: 20px; 
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #menu-toggle {
@@ -20,9 +44,8 @@ body {
     font-size: 2rem;
     cursor: pointer;
     text-align: right;
-    color: #2c3e50;
+    color: var(--accent-color);
     padding: 10px;
-    transition: transform 0.2s ease-in-out;
 }
 
 .hamburger:hover {
@@ -35,7 +58,7 @@ body {
     list-style: none;
     padding: 0;
     text-align: center;
-    background: #f8f9fa;
+    background: var(--nav-bg);
 }
 
 #menu-toggle:checked ~ .nav-links {
@@ -49,21 +72,66 @@ body {
 
 .nav-links a {
     text-decoration: none; 
-    color: #2c3e50;        
-    transition: color 0.3s ease, font-weight 0.3s ease; 
+    color: var(--text-color);        
+    padding: 15px;
+    display: block;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #2980b9;       
-    font-weight: bold;     
+    color: var(--accent-color);
 }
+
+/* --- 3. DARK MODE TOGGLE SWITCH --- */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 50px;
+}
+
+.theme-switch input { display:none; }
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--accent-color); }
+input:checked + .slider:before { transform: translateX(26px); }
 
 header {
     position: sticky;
     top: 0;
-    background-color: #ffffff;
+    background-color: var(--header-bg);
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px var(--card-shadow);
 }
 
 h1 {
@@ -88,15 +156,10 @@ img {
 }
 
 #Experience li {
-    display: grid;
-    grid-template-areas: 
-        "title"
-        "date"
-        "desc";
-    background: #ffffff;
+    background: var(--section-bg);
     padding: 20px;
-    border-left: 5px solid #2980b9;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--accent-color);
+    box-shadow: 2px 2px 5px var(--card-shadow);
 }
 
 .job-title {
@@ -129,10 +192,9 @@ img {
 }
 
 #Connect i {
-    font-size: 2.5rem;       
-    color: #2c3e50;
-    padding: 10px;           
-    transition: transform 0.3s, color 0.3s; 
+    font-size: 2.5rem;
+    color: var(--text-color);
+    transition: color 0.3s;
 }
 
 #Connect i:hover {
@@ -217,12 +279,10 @@ img {
 }
 
 #Skills li {
-    background-color: #2980b9;
+    background-color: var(--accent-color);
     color: white;
     padding: 8px 15px;
     border-radius: 20px;
-    font-size: 0.9rem;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
 footer {
@@ -308,12 +368,13 @@ footer {
 }
 
 #projects li {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
+    background: var(--section-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     width: 280px; 
     transition: transform 0.2s;
+    box-shadow: 0 4px 6px var(--card-shadow);
 }
 
 #projects li a {
