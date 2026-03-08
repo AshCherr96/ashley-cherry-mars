@@ -134,3 +134,18 @@ fetch('https://api.github.com/users/AshCherr96/repos')
     }
   })
   .catch(error => console.error('Error fetching repositories:', error));
+
+  for (let i = 0; i < repositories.length; i++) {
+    const project = document.createElement('li');
+    
+    // Adding the description and date for more detail
+    const description = repositories[i].description ? repositories[i].description : "No description provided.";
+    const date = new Date(repositories[i].created_at).toLocaleDateString();
+
+    project.innerHTML = `
+        <a href="${repositories[i].html_url}" target="_blank"><strong>${repositories[i].name}</strong></a>
+        <p>${description}</p>
+        <small>Created on: ${date}</small>
+    `;
+    projectList.appendChild(project);
+}
