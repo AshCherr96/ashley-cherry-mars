@@ -1,4 +1,4 @@
-// --- Footer & Copyright ---
+// --- 1. Footer & Copyright ---
 const body = document.querySelector('body');
 const footer = document.createElement('footer'); 
 body.appendChild(footer); 
@@ -10,7 +10,33 @@ const copyright = document.createElement('p');
 copyright.innerHTML = `Ashley Cherry &copy; ${thisYear}`; 
 footer.appendChild(copyright);
 
-// --- List of Skills ---
+// --- 2. Dark Mode Toggle Logic ---
+const toggleSwitch = document.querySelector('#checkbox');
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+    }    
+}
+
+if (toggleSwitch) {
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    // Check for saved user preference on load
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+            document.body.classList.add('dark-mode');
+        }
+    }
+}
+
+// --- 3. List of Skills ---
 const skills = [
     "JavaScript", 
     "HTML & CSS", 
@@ -35,14 +61,14 @@ for (let i = 0; i < skills.length; i++) {
     skillsList.appendChild(skill);
 }
 
-// --- Message Form ---
+// --- 4. Message Form & Conditional Rendering ---
 const messageForm = document.getElementsByName("leave_message")[0];
 const messageSection = document.getElementById("messages");
 
-// Function to hide/show the "Messages" section 
 function toggleMessageSection() {
     const messageList = messageSection.querySelector("ul");
-    // This hides the entire messages section if the list is empty
+    if (!messageList) return; 
+
     if (messageList.children.length === 0) {
         messageSection.style.display = "none";
     } else {
@@ -50,6 +76,7 @@ function toggleMessageSection() {
     }
 }
 
+// Initial call to hide messages header on load
 toggleMessageSection();
 
 messageForm.addEventListener("submit", (event) => {
@@ -59,8 +86,6 @@ messageForm.addEventListener("submit", (event) => {
     const usersEmail = event.target.usersEmail.value;
     const usersMessage = event.target.usersMessage.value;
 
-    console.log("Form Submitted:", usersName, usersEmail, usersMessage);
-
     const messageList = messageSection.querySelector("ul");
     const newMessage = document.createElement("li");
 
@@ -69,56 +94,41 @@ messageForm.addEventListener("submit", (event) => {
         <span>wrote: ${usersMessage}</span>
     `;
 
+    // Edit Button
+    const editButton = document.createElement("button");
+    editButton.innerText = "edit";
+    editButton.type = "button";
+    editButton.addEventListener("click", () => {
+        const span = newMessage.querySelector("span");
+        if (editButton.innerText === "edit") {
+            const currentMsg = span.innerText.replace("wrote: ", "");
+            span.innerHTML = `wrote: <input type="text" value="${currentMsg}">`;
+            editButton.innerText = "save";
+        } else {
+            const input = span.querySelector("input");
+            span.innerText = `wrote: ${input.value}`;
+            editButton.innerText = "edit";
+        }
+    });
+
+    // Remove Button
     const removeButton = document.createElement("button");
     removeButton.innerText = "remove";
     removeButton.type = "button";
-
     removeButton.addEventListener("click", () => {
-        const entry = removeButton.parentNode;
-        entry.remove();
-        toggleMessageSection(); 
+        newMessage.remove();
+        toggleMessageSection();
     });
 
-
-// Create Edit button
-const editButton = document.createElement("button");
-editButton.innerText = "edit";
-editButton.type = "button";
-editButton.style.marginLeft = "10px"; 
-
-editButton.addEventListener("click", () => {
-    const entry = editButton.parentNode;
-    const span = entry.querySelector("span");
-    const currentMessage = span.innerText.replace("wrote: ", "");
-
-    if (editButton.innerText.toLowerCase() === "edit") {
-        const editInput = document.createElement("input");
-        editInput.type = "text";
-        editInput.value = currentMessage;
-        
-        span.innerText = "wrote: ";
-        span.appendChild(editInput);
-        
-        editButton.innerText = "save";
-    } else {
-        const editInput = span.querySelector("input");
-        const newMessage = editInput.value;
-        
-        span.innerText = `wrote: ${newMessage}`;
-        editButton.innerText = "edit";
-    }
-});
-
-newMessage.appendChild(editButton);
-newMessage.appendChild(removeButton); 
-
+    newMessage.appendChild(editButton);
+    newMessage.appendChild(removeButton);
     messageList.appendChild(newMessage);
 
     toggleMessageSection(); 
     messageForm.reset();    
 });
 
-// --- Fetch GitHub Repositories (Improved) ---
+// --- 5. Fetch GitHub Repositories ---
 fetch('https://api.github.com/users/AshCherr96/repos')
   .then(response => response.json())
   .then(repositories => {
@@ -127,8 +137,6 @@ fetch('https://api.github.com/users/AshCherr96/repos')
 
     for (let i = 0; i < repositories.length; i++) {
       const project = document.createElement('li');
-      
-      // Get decription or use a default message if it's null
       const desc = repositories[i].description || "Personal project exploring web development.";
       const date = new Date(repositories[i].created_at).toLocaleDateString();
 
@@ -139,4 +147,5 @@ fetch('https://api.github.com/users/AshCherr96/repos')
       `;
       projectList.appendChild(project);
     }
-  });
+  })
+  .catch(error => console.error('Error fetching repositories:', error));
