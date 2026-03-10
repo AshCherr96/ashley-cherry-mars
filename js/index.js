@@ -12,37 +12,28 @@ footer.appendChild(copyright);
 
 // --- List of Skills ---
 const skills = [
-    "JavaScript", 
-    "HTML & CSS", 
-    "Git & GitHub", 
-    "React", 
-    "Responsive Design", 
-    "UI/UX Principles",
-    "Data Visualization",
-    "Problem Solving",
-    "Team Collaboration",
-    "WordPress",
-    "LLM Prompt Creation & Evaluation",
+    "JavaScript", "HTML & CSS", "Git & GitHub", "React", 
+    "Responsive Design", "UI/UX Principles", "Data Visualization", 
+    "Problem Solving", "Team Collaboration", "WordPress", 
+    "LLM Prompt Creation & Evaluation"
 ];
 
 const skillsSection = document.getElementById('Skills');
 const skillsList = skillsSection.querySelector('ul');
 skillsList.innerHTML = ''; 
 
-for (let i = 0; i < skills.length; i++) {
+skills.forEach(skillText => {
     const skill = document.createElement('li');
-    skill.innerText = skills[i];
+    skill.innerText = skillText;
     skillsList.appendChild(skill);
-}
+});
 
 // --- Message Form ---
 const messageForm = document.getElementsByName("leave_message")[0];
 const messageSection = document.getElementById("messages");
 
-// Function to hide/show the "Messages" section 
 function toggleMessageSection() {
     const messageList = messageSection.querySelector("ul");
-    // This hides the entire messages section if the list is empty
     if (messageList.children.length === 0) {
         messageSection.style.display = "none";
     } else {
@@ -59,8 +50,6 @@ messageForm.addEventListener("submit", (event) => {
     const usersEmail = event.target.usersEmail.value;
     const usersMessage = event.target.usersMessage.value;
 
-    console.log("Form Submitted:", usersName, usersEmail, usersMessage);
-
     const messageList = messageSection.querySelector("ul");
     const newMessage = document.createElement("li");
 
@@ -69,72 +58,53 @@ messageForm.addEventListener("submit", (event) => {
         <span>wrote: ${usersMessage}</span>
     `;
 
+    // Edit Button
+    const editButton = document.createElement("button");
+    editButton.innerText = "edit";
+    editButton.type = "button";
+    editButton.style.marginLeft = "10px"; 
+
+    editButton.addEventListener("click", () => {
+        const span = newMessage.querySelector("span");
+        if (editButton.innerText === "edit") {
+            const currentMessage = span.innerText.replace("wrote: ", "");
+            span.innerHTML = `wrote: <input type="text" value="${currentMessage}">`;
+            editButton.innerText = "save";
+        } else {
+            const input = span.querySelector("input");
+            span.innerText = `wrote: ${input.value}`;
+            editButton.innerText = "edit";
+        }
+    });
+
+    // Remove Button
     const removeButton = document.createElement("button");
     removeButton.innerText = "remove";
     removeButton.type = "button";
-
     removeButton.addEventListener("click", () => {
-        const entry = removeButton.parentNode;
-        entry.remove();
+        newMessage.remove();
         toggleMessageSection(); 
     });
 
-
-// Create Edit button
-const editButton = document.createElement("button");
-editButton.innerText = "edit";
-editButton.type = "button";
-editButton.style.marginLeft = "10px"; 
-
-editButton.addEventListener("click", () => {
-    const entry = editButton.parentNode;
-    const span = entry.querySelector("span");
-    const currentMessage = span.innerText.replace("wrote: ", "");
-
-    if (editButton.innerText.toLowerCase() === "edit") {
-        const editInput = document.createElement("input");
-        editInput.type = "text";
-        editInput.value = currentMessage;
-        
-        span.innerText = "wrote: ";
-        span.appendChild(editInput);
-        
-        editButton.innerText = "save";
-    } else {
-        const editInput = span.querySelector("input");
-        const newMessage = editInput.value;
-        
-        span.innerText = `wrote: ${newMessage}`;
-        editButton.innerText = "edit";
-    }
-});
-
-newMessage.appendChild(editButton);
-newMessage.appendChild(removeButton); 
-
+    newMessage.appendChild(editButton);
+    newMessage.appendChild(removeButton); 
     messageList.appendChild(newMessage);
 
     toggleMessageSection(); 
     messageForm.reset();    
 });
 
-// --- Fetch GitHub Repositories (Improved) ---
+// --- Fetch GitHub Repositories ---
 fetch('https://api.github.com/users/AshCherr96/repos')
   .then(response => response.json())
   .then(repositories => {
     const projectSection = document.getElementById('projects');
     const projectList = projectSection.querySelector('ul');
 
-    for (let i = 0; i < repositories.length; i++) {
-      const project = document.createElement('li');
-      
-      // Only displaying the clickable name
-      project.innerHTML = `
-        <a href="${repositories[i].html_url}" target="_blank">
-            <strong>${repositories[i].name}</strong>
-        </a>
-      `;
-      projectList.appendChild(project);
-    }
+    repositories.forEach(repo => {
+        const project = document.createElement('li');
+        project.innerHTML = `<a href="${repo.html_url}" target="_blank"><strong>${repo.name}</strong></a>`;
+        projectList.appendChild(project);
+    });
   })
   .catch(error => console.error('Error fetching repositories:', error));
