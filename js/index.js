@@ -1,4 +1,4 @@
-// --- Footer & Copyright ---
+// --- Footer & Copyright --- 
 const body = document.querySelector('body');
 const footer = document.createElement('footer'); 
 body.appendChild(footer); 
