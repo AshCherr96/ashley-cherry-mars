@@ -155,6 +155,10 @@ nav {
     background: transparent;
     border: none;
     box-shadow: none;
+    max-height: none;
+    opacity: 1;
+    transform: translateY(0);
+    overflow: visible;
   }
 
   .nav-links a {
