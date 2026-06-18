@@ -4,7 +4,7 @@
     <title>Ashley Cherry's Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional portfolio and Personal Intro">
+    <meta name="description" content="Professional portfolio and personal intro for Ashley Cherry.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -12,106 +12,188 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 
-<body> 
+<body>
+    <header class="site-header">
+        <div class="brand-group">
+            <span class="eyebrow">Portfolio</span>
+            <h1>Ashley Cherry</h1>
+        </div>
 
-    <header>
-        <h1>Ashley Cherry</h1>
-<nav>
-    
-<div>
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="hamburger">&#9776;</label>
+        <input type="checkbox" id="menu-toggle" aria-label="Toggle navigation menu">
+        <label for="menu-toggle" class="hamburger" aria-hidden="true">&#9776;</label>
 
-    <ul class="nav-links">
-        <li><a href="#About">About</a></li>
-        <li><a href="#Skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#Experience">Experience</a></li>
-        <li><a href="#Connect">Connect</a></li>
-        <li><a href="#leave-a-message">Leave a Message</a></li>
-    </ul>
-</nav>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#About">About</a></li>
+                <li><a href="#Skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#Experience">Experience</a></li>
+                <li><a href="#Connect">Connect</a></li>
+                <li><a href="#leave-a-message">Message</a></li>
+            </ul>
+        </nav>
     </header>
 
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <span class="eyebrow">Creative + technical</span>
+                <h2>Building polished digital experiences with a modern, high-tech edge.</h2>
+                <p>I blend design thinking, web development, and data storytelling to turn bold ideas into memorable, usable products.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">See work</a>
+                    <a href="#Connect" class="btn btn-secondary">Connect</a>
+                </div>
+                <div class="hero-tags">
+                    <span>Featured:</span>
+                    <div class="tags-grid">
+                        <span>UI design</span>
+                        <span>Front-end</span>
+                        <span>Data visuals</span>
+                        <span>Creative systems</span>
+                    </div>
+                </div>
+            </div>
 
-<main>
-    <section id="About">
-        <h2>About</h2>
-        <img src="images/profile-pic.jpg" alt="A professional headshot of Ashley Cherry" width="200">
-        <p>Hi, I'm Ashley Cherry, a passionate software and web developer with a strong background in data annotation and labeling. I have experience working with various tools and technologies to create scalable, reusable design systems and storytelling templates for enterprise, nonprofit, and education clients. My expertise includes leveraging data visualization tools like Canva Magic Studio and Flourish to transform raw data into actionable business insights. I am committed to applying design thinking and accessibility principles to craft inclusive, user-centered visuals that make complex information clear and engaging.</p>
-    </section>
+            <div class="hero-panel glass-card">
+                <div class="panel-header">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="panel-content">
+                    <div class="panel-badge">Project lab</div>
+                    <pre><code>&lt;section class="experience"&gt;
+  &lt;h2&gt;Human-first tech&lt;/h2&gt;
+  &lt;p&gt;Interfaces that feel fast, clear, and polished.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+                    <div class="panel-stats">
+                        <div><strong>12</strong><span>live demos</span></div>
+                        <div><strong>8</strong><span>design systems</span></div>
+                        <div><strong>24</strong><span>data stories</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="Experience">
-        <h2>Experience</h2>
-       <div class="job-item">
-                <span class="job-title">Code The Dream Coding School</span>
-                <span class="job-date">November 2025 - Present</span>
-                <p class="job-description">Software and Web Development (Remote): JavaScript, HTML, CSS, React, Node.js, Express, etc.</p>
-        </div>
-        <div class="job-item">
-                <span class="job-title">Extern - Canva Visual Data Storytelling & AI Design</span>
-                <span class="job-date">Nov 2025 - Dec 2025</span>
-                <p class="job-description">Built scalable, reusable design systems and storytelling templates for enterprise, nonprofit, and education clients to enhance communication and efficiency. Leveraged tools like Canva Magic Studio and Flourish to transform raw data into actionable business insights. Applied design thinking and accessibility principles to craft inclusive, user-centered visuals that made complex information clear and engaging.</p>
-        </div>
-        <div class="job-item">
-                <span class="job-title">Professional Development - Career Break</span>
-                <span class="job-date">Oct 2024 - Sep 2025</span>
-                <p class="job-description">Engaged in freelance projects involving web/software development and business-related skills, while
-pursuing career opportunities and professional growth.</p>
-        </div>
-        <div class="job-item">
-            <span class="job-title">Data Annotation Specialist - Outlier AI (Freelance)</span>
-            <span class="job-date">July 2024 - Sept 2024</span>
-            <p class="job-description">Annotated and labeled data for machine learning models, ensuring high-quality datasets for training and improving AI algorithms. Collaborated with cross-functional teams to meet project requirements and deadlines.</p>
-        </div>
-        <div class="job-item">
-    <span class="job-title">Data Annotation & Data Labeling Specialist - Appen (Part-time, Freelance)</span>
-    <span class="job-date">May 2023 - Sept 2024</span>
-    <p class="job-description">Annotated and labeled data for machine learning models, ensuring high-quality datasets for training and improving AI algorithms. Collaborated with cross-functional teams to meet project requirements and deadlines.</p>
-</div> </section>
+        <section id="About" class="section-panel">
+            <div class="section-heading">
+                <span class="eyebrow">About</span>
+                <h2>Design, code, and storytelling—focused on clarity and impact.</h2>
+            </div>
+            <div class="about-grid">
+                <img src="images/profile-pic.jpg" alt="A professional headshot of Ashley Cherry">
+                <div class="about-copy">
+                    <p>Hi, I'm Ashley Cherry, a software and web developer with a strong background in data annotation, visualization, and UX-driven storytelling. I build scalable, reusable design systems and polished front-end experiences that help enterprise, nonprofit, and education teams communicate with clarity.</p>
+                    <p>My process centers on accessible design, purposeful interactions, and vibrant visual systems that support both brand and product goals.</p>
+                </div>
+            </div>
+        </section>
 
-   <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-    </ul>
-</section>
+        <section id="projects" class="section-panel">
+            <div class="section-heading">
+                <span class="eyebrow">Projects</span>
+                <h2>Highlighted work and code experiments.</h2>
+            </div>
+            <ul class="project-grid">
+                <li class="project-card featured">
+                    <div class="project-meta">
+                        <span class="project-type">Featured</span>
+                        <h3>Interactive data storytelling</h3>
+                    </div>
+                    <p>A polished UI experience that turns raw data into clear, visual narratives with intuitive navigation and refined motion.</p>
+                    <div class="project-tags">
+                        <span>React</span>
+                        <span>CSS animation</span>
+                        <span>UX copy</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="btn btn-tertiary">View case study</a>
+                        <a href="#" class="btn btn-tertiary">Live demo</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
-      <section id="Skills">
-        <h2>Skills</h2>
-        <ul>
-        </ul>
-    </section>
+        <section id="Experience" class="section-panel">
+            <div class="section-heading">
+                <span class="eyebrow">Experience</span>
+                <h2>Roles and collaborations that shaped my craft.</h2>
+            </div>
+            <div class="experience-grid">
+                <div class="job-item">
+                    <span class="job-title">Code The Dream Coding School</span>
+                    <span class="job-date">November 2025 - Present</span>
+                    <p class="job-description">Software and Web Development (Remote): JavaScript, HTML, CSS, React, Node.js, Express, etc.</p>
+                </div>
+                <div class="job-item">
+                    <span class="job-title">Extern - Canva Visual Data Storytelling & AI Design</span>
+                    <span class="job-date">Nov 2025 - Dec 2025</span>
+                    <p class="job-description">Built scalable, reusable design systems and storytelling templates for enterprise, nonprofit, and education clients. Leveraged Canva Magic Studio and Flourish to transform raw data into actionable insights.</p>
+                </div>
+                <div class="job-item">
+                    <span class="job-title">Professional Development - Career Break</span>
+                    <span class="job-date">Oct 2024 - Sep 2025</span>
+                    <p class="job-description">Pursued freelance projects and growth in web/software development while exploring strategic design and data storytelling opportunities.</p>
+                </div>
+                <div class="job-item">
+                    <span class="job-title">Data Annotation Specialist - Outlier AI (Freelance)</span>
+                    <span class="job-date">July 2024 - Sept 2024</span>
+                    <p class="job-description">Annotated machine learning datasets and collaborated with cross-functional teams to deliver high-quality mapping for AI training.</p>
+                </div>
+                <div class="job-item">
+                    <span class="job-title">Data Annotation & Labeling Specialist - Appen (Part-time)</span>
+                    <span class="job-date">May 2023 - Sept 2024</span>
+                    <p class="job-description">Delivered consistent, accurate dataset labeling to help improve training for emerging AI models.</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="Connect">
-        <h2>Connect</h2>
-        <ul>
-            <li><a href="https://github.com/AshCherr96" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub!"><i class="fa-brands fa-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/ashley-cherry-222a88267/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn!"><i class="fa-brands fa-linkedin"></i></a></li>
-        </ul>
-    </section>
+        <section id="Skills" class="section-panel">
+            <div class="section-heading">
+                <span class="eyebrow">Skills</span>
+                <h2>Tools and strengths I use every day.</h2>
+            </div>
+            <ul class="skills-grid"></ul>
+        </section>
 
-    <section id="leave-a-message">
-        <h2>Leave a Message</h2>
-        <form name="leave_message">
-            <label for="usersName">Name:</label>
-            <input type="text" name="usersName" id="usersName" required>
-            <br>
-            <label for="usersEmail">Email:</label>
-            <input type="email" name="usersEmail" required>
-            <br>
-            <label for="usersMessage">Message:</label>
-            <textarea name="usersMessage" required></textarea>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
+        <section id="Connect" class="section-panel contact-panel">
+            <div class="section-heading">
+                <span class="eyebrow">Connect</span>
+                <h2>Let's build something together.</h2>
+            </div>
+            <div class="contact-grid">
+                <div>
+                    <p>Reach out for collaborations, freelance work, or to talk through a project idea.</p>
+                    <ul class="social-list">
+                        <li><a href="https://github.com/AshCherr96" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/ashley-cherry-222a88267/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div class="message-card glass-card">
+                    <h3>Send a quick message</h3>
+                    <form name="leave_message">
+                        <label for="usersName">Name</label>
+                        <input type="text" name="usersName" id="usersName" required>
+                        <label for="usersEmail">Email</label>
+                        <input type="email" name="usersEmail" required>
+                        <label for="usersMessage">Message</label>
+                        <textarea name="usersMessage" required></textarea>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
-    <section id="messages">
-        <h2>Messages</h2>
-        <ul></ul>
-    </section>
-</main>
+        <section id="messages" class="section-panel">
+            <div class="section-heading">
+                <span class="eyebrow">Messages</span>
+                <h2>Recent conversations</h2>
+            </div>
+            <ul class="messages-list"></ul>
+        </section>
+    </main>
 
-<script src="js/index.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
