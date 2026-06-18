@@ -378,7 +378,7 @@ section#About {
 #Connect a::after {
   content: attr(aria-label);
   position: absolute;
-  bottom: -2.5rem;
+  top: -2.8rem;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(79, 136, 255, 0.95);
@@ -420,7 +420,7 @@ section#About {
   width: 100%;
   padding: 1rem 1.1rem;
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(79, 136, 255, 0.35);
   background: rgba(255, 255, 255, 0.03);
   color: var(--text);
 }
