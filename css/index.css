@@ -548,3 +548,26 @@ section#About {
     scroll-behavior: auto !important;
   }
 }
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 0.9rem 0;
+  color: var(--muted);
+  background: rgba(0,0,0,0.06);
+  font-size: 0.95rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Ensure content doesn't sit under fixed footer */
+body {
+  padding-bottom: 3.2rem;
+}
