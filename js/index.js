@@ -108,3 +108,16 @@ fetch('https://api.github.com/users/AshCherr96/repos')
     });
   })
   .catch(error => console.error('Error fetching repositories:', error));
+
+// --- Mobile nav: auto-close when a link is tapped ---
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    if (!menuToggle) return;
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // close the checkbox-driven mobile menu
+            menuToggle.checked = false;
+        });
+    });
+});
