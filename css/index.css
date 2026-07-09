@@ -58,7 +58,7 @@ header h1 {
   padding: 1.1rem 1.5rem 0.65rem;
   font-size: clamp(2rem, 4vw, 2.8rem);
   letter-spacing: -0.04em;
-  justify-self: start;
+  justify-self: center;
 }
 
 nav {
@@ -268,14 +268,20 @@ section h2 {
 
 section#About {
   display: grid;
-  grid-template-columns: minmax(240px, 280px) 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr minmax(240px, 300px);
+  gap: 2.5rem;
   align-items: start;
 }
 
-#About img {
-  width: auto;
-  max-width: 180px;
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.computer-image {
+  width: 100%;
+  max-width: 100%;
   border-radius: 1.5rem;
   border: 1px solid rgba(79, 136, 255, 0.25);
   box-shadow: 0 18px 40px rgba(79, 136, 255, 0.12);
@@ -285,6 +291,18 @@ section#About {
   margin: 0;
   color: var(--muted);
   font-size: 1rem;
+  max-width: 65ch;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  section#About {
+    grid-template-columns: 1fr;
+  }
+
+  .computer-image {
+    max-width: 280px;
+  }
 }
 
 .job-item,
@@ -543,8 +561,8 @@ section#About {
     font-size: 1rem;
   }
 
-  #About {
-    grid-template-columns: 320px 1fr;
+  section#About {
+    grid-template-columns: 1.2fr 300px;
   }
 
   #Connect ul {
